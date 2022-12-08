@@ -23,20 +23,22 @@ In this page, Buckle Up automatically generate basic clothes for users, users ca
 ### Checklist View
 ![Imgur](https://i.imgur.com/5P1d2rPl.png)![Imgur](https://i.imgur.com/4hf86tOl.png)  
 In this page, users can find other items we recommend to bring with, users can also add, delete and change items.  
+  
 For this page, we only allow users to change toiletries, electronics and accessories. Cause the changes of clothes are made on Outfit View, this view only allow users to check whether bring clothes or not.  
+  
 To edit items, please also click on **"edit"**, the operations are the same with those in outfit view.  
 
 ### Features that we may remove in version2
 At first we plan to add a circle to give users an idea of how many items he/she has already checked. To implement this function, we tried over 2 days, but we still got some bugs. As data need to be passed through multiple views and two repositories, the firebase keeps refreshing, which leads to our UI keeps refreshing too, there might be some deadlocks currently we cannot solve.  
   
 We tries several ways to implement this:  
-We directly add this feature as one attricutes in our model, and try to update the value each time users checked or unchecked items, but this leads to deadlocks. We suppose it's because the sub class calls the function in its parent class.    
+We directly add this feature as one attricutes in our model, and try to update the value each time users checked or unchecked items, but this leads to deadlocks. We suppose it's because the sub class calls the function in its parent class.  
+  
 Then we came up with the idea, create a new model to save the data, thus we do need to pass data through two repositories, but this also failed. Then we thought passing values through two repositories maybe a little bit complex.  
+  
 Next we choose to calculate this value every time users launch the app, and do not save this value into firestore. But this also failed.  
-
+  
+  
 Then we had a meeting to discuss if this feature is necessary, two of our team members did some user survey again. And over 70% percentage of users said, they are not interested in this feature, as they will check the checklists again before they leave, even they know they have already checked the list. Also, showing the percentage is meaningless to them, from the user survey results, we learn that for users, there are only two numbers that maybe meaningful to them, one is 0% and the other is 100%, any percentage between 0 and 100 means the same: they haven't packed all the things they will bring.  
-
-Due to the technical blockers and
-Then we had a meeting to discuss if this feature is necessary, two of our team members did some user survey again. And over 70% percentage of users said, they are not interested in this feature, as they will check the checklists again before they leave, even they know they have already checked the list. Also, showing the percentage is meaningless to them, from the user survey results, we learn that for users, there are only two numbers that maybe meaningful to them, one is 0% and the other is 100%, any percentage between 0 and 100 means the same: they haven't packed all the things they will bring.  
-
+  
 Due to the techinal blockers and our user survuy results, we may want to remove this feature in our final version.
